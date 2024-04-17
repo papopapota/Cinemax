@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+
+<div class="card-body">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Género</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Estreno</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Disponible</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pelicula : ${peliculas}">
+            <td th:text="${pelicula.idpelicula}"></td>
+            <td th:text="${pelicula.titulo}"></td>
+            <td th:text="${pelicula.descripcion}"></td>
+            <td th:text="${pelicula.genero.nom_genero}"></td>
+            <td th:text="${pelicula.duracion}"></td>
+            <td th:text="${pelicula.estreno}"></td>
+            <td th:text="${pelicula.idioma}"></td>
+            <td th:text="${pelicula.disponible}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
