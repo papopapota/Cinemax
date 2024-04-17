@@ -16,4 +16,9 @@ public class PeliculaService implements IPeliculaService{
     public List<Peliculas> listarPeliculas() {
         return PeliculaRepository.findAll();
     }
+
+    @Override
+    public void regitrarPelicula(Peliculas peliculas) {
+        PeliculaRepository.save(peliculas);
+    }
 }
