@@ -1,4 +1,4 @@
 package Cinemax.proyectoCinemax.model.bd;
 
-public class sala {
+public class Boletos {
 }
