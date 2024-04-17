@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Peliculas")
-public class genero {
+public class Genero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idgenero; // Cambiar el nombre del campo

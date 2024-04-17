@@ -1,4 +1,4 @@
 package Cinemax.proyectoCinemax.model.bd;
 
-public class funcion {
+public class Funcion {
 }

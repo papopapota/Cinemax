@@ -1,4 +1,4 @@
 package Cinemax.proyectoCinemax.model.bd;
 
-public class tipoUsuario {
+public class Usuario {
 }

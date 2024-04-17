@@ -9,7 +9,7 @@ import java.sql.Time;
 @Data
 @Entity
 @Table(name = "Peliculas")
-public class peliculas {
+public class Peliculas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idpelicula;
@@ -20,7 +20,7 @@ public class peliculas {
 
     @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
     @JoinColumn(name = "idgenero") // Nombre de la columna que actúa como clave externa en la tabla Peliculas
-    private genero genero; // Cambiar el tipo y el nombre del campo
+    private Genero genero; // Cambiar el tipo y el nombre del campo
 
     private Time duracion;
     private Date estreno;
