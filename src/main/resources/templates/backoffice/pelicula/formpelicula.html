@@ -24,6 +24,7 @@
             <th scope="col">Id</th>
             <th scope="col">Título</th>
             <th scope="col">Descripción</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Género</th>
             <th scope="col">Duración</th>
             <th scope="col">Estreno</th>
@@ -36,6 +37,7 @@
             <td th:text="${pelicula.idpelicula}"></td>
             <td th:text="${pelicula.titulo}"></td>
             <td th:text="${pelicula.descripcion}"></td>
+            <td th:text="${pelicula.imagen}"></td>
             <td th:text="${pelicula.genero.nom_genero}"></td>
             <td th:text="${pelicula.duracion}"></td>
             <td th:text="${pelicula.estreno}"></td>
@@ -46,6 +48,7 @@
                 th:data-pelicod="${pelicula.idpelicula}"
                         th:data-pelititulo="${pelicula.titulo}"
                         th:data-pelidescrip="${pelicula.descripcion}"
+                        th:data-peliimagen="${pelicula.imagen}"
                         th:data-peligenero="${pelicula.genero.nom_genero}"
                         th:data-peliduracion="${pelicula.duracion}"
                         th:data-peliestreno="${pelicula.estreno}"

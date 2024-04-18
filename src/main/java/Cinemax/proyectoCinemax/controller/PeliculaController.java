@@ -18,7 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/pelicula")
 public class PeliculaController {
-    @Autowired
+
     private IPeliculaService IPeliculaService;
 
     @GetMapping("")
