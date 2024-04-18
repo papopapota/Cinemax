@@ -10,11 +10,15 @@
 <nav th:replace="layout::menu"></nav>
 
 <div class="card-body">
-    <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
-    <hr />
+    <div class="card-header text-bg-danger">
+        Mantenimiento de peliculas:
+    </div>
 
-    <div id="divmensaje"></div>
-    <table id="tblpelicula" class="table">
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblpelicula" class="table">
         <thead>
         <tr>
             <th scope="col">Id</th>
@@ -51,7 +55,66 @@
             </td>
         </tr>
         </tbody>
-    </table>
+        </table>
+    </div>
 </div>
+<!-- Modal registro y actualización de pelicula -->
+<div class="modal fade" id="modalpelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Pelicula</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnompelicula"
+                           placeholder="name@example.com">
+                    <label for="txtnompelicula">Ingrese nombre de la pelicula</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtdescpelicula"
+                           placeholder="name@example.com">
+                    <label for="txtdescpelicula">Ingrese la descripción</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txturlimagen"
+                           placeholder="name@example.com">
+                    <label for="txturlimagen">Ingrese la url de la imagen</label>
+                </div>
+                <div class="mb-3">
+                    <label for="cbopelicula" class="form-label">Seleccione genero</label>
+                    <select id="cbopelicula" class="form-select" ></select>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtduracion"
+                           placeholder="name@example.com">
+                    <label for="txtduracion">Ingrese duracion</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtestreno"
+                           placeholder="name@example.com">
+                    <label for="txtestreno">Ingrese fecha de estreno</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtidioma"
+                           placeholder="name@example.com">
+                    <label for="txtidioma">Ingrese idioma</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtdisponible"
+                           placeholder="name@example.com">
+                    <label for="txtdisponible">Ingrese formato disponible</label>
+                </div>
+                <input type="hidden" id="hddpelicod" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
