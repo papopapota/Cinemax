@@ -21,4 +21,9 @@ public class PeliculaService implements IPeliculaService{
     public void regitrarPelicula(Peliculas peliculas) {
         PeliculaRepository.save(peliculas);
     }
+    @Override
+    public void eliminarPelicula(Integer id) {
+        PeliculaRepository.deleteById(id);
+    }
+
 }

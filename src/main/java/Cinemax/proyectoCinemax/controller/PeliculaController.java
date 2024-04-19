@@ -62,4 +62,18 @@ public class PeliculaController {
         return PeliculaResponse.builder().mensaje(mensaje).respuesta(respuesta).build();
 
     }
+    @DeleteMapping("/eliminar/{id}")
+    @ResponseBody
+    public PeliculaResponse eliminarPelicula(@PathVariable("id") Integer id) {
+        String mensaje = "Pelicula eliminada correctamente";
+        boolean respuesta = true;
+        try {
+            IPeliculaService.eliminarPelicula(id);
+        } catch (Exception ex) {
+            mensaje = "Error al eliminar la película";
+            respuesta = false;
+        }
+        return PeliculaResponse.builder().mensaje(mensaje).respuesta(respuesta).build();
+    }
+
 }

@@ -67,3 +67,21 @@ function listarCboGenero(idgenero){
         }
     })
 }
+
+$(document).on("click", ".btneliminar", function() {
+    var peliculaId = $(this).data("pelicod");
+    if (confirm("¿Estás seguro de que quieres eliminar esta película?")) {
+        $.ajax({
+            type: "DELETE",
+            url: "/pelicula/eliminar/" + peliculaId,
+            success: function() {
+                // Recargar la página o actualizar la tabla después de eliminar
+                // Por ejemplo:
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al eliminar la película:", error);
+            }
+        });
+    }
+});

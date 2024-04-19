@@ -8,5 +8,6 @@ public interface IPeliculaService {
     List<Peliculas> listarPeliculas();
 
     void regitrarPelicula(Peliculas peliculas);
+    void eliminarPelicula(Integer id);
 
 }
