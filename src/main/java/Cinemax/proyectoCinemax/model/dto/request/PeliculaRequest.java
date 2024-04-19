@@ -14,7 +14,6 @@ public class PeliculaRequest {
     private String imagen;
     private Integer genero;
     private Time duracion;
-    private Date estreno;
     private String idioma;
-    private String disponible;
+    private Boolean enestreno;
 }

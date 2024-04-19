@@ -51,9 +51,8 @@ public class PeliculaController {
             genero.setIdgenero(peliculaRequest.getGenero());
             peliculas.setGenero(genero);
             peliculas.setDuracion(peliculaRequest.getDuracion());
-            peliculas.setEstreno(peliculaRequest.getEstreno());
             peliculas.setIdioma(peliculaRequest.getIdioma());
-            peliculas.setDisponible(peliculaRequest.getDisponible());
+            peliculas.setEnestreno(peliculaRequest.getEnestreno());
             IPeliculaService.regitrarPelicula(peliculas);
         }catch (Exception ex){
             mensaje = "Producto no registrado, error en la BD.";

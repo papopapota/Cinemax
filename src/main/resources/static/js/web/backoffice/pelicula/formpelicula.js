@@ -5,9 +5,8 @@ $(document).on("click", "#btnagregar", function(){
     $("#hddpelicod").val("0");
     listarCboGenero(0,0);
     $("#txtduracion").val("");
-    $("#txtestreno").val("");
     $("#txtidioma").val("");
-    $("#txtdisponible").val("");
+    $("#cbpelienestreno").prop("checked", false);
     $("#modalpelicula").modal("show");
 });
 
@@ -19,9 +18,11 @@ $(document).on("click", ".btnactualizar", function(){
     $("#cbopelicula").empty();
     listarCboGenero($(this).attr("data-peligenero"));
     $("#txtduracion").val($(this).attr("data-peliduracion"));
-    $("#txtestreno").val($(this).attr("data-peliestreno"));
     $("#txtidioma").val($(this).attr("data-peliidioma"));
-    $("#txtdisponible").val($(this).attr("data-pelidisp"));
+    if($(this).attr("data-pelienestreno") === "true"){
+            $("#cbpelienestreno").prop("checked", true);
+        }else
+            $("#cbpelienestreno").prop("checked", false);
     $("#modalpelicula").modal("show");
 });
 
@@ -37,12 +38,12 @@ $(document).on("click", "#btnguardar", function(){
             imagen: $("#txturlimagen").val(),
             genero: $("#cbopelicula").val(),
             duracion: $("#txtduracion").val(),
-            estreno: $("#txtestreno").val(),
             idioma: $("#txtidioma").val(),
-            disponible: $("#txtdisponible").val()
+            enestreno: $("#cbpelienestreno").prop("checked")
         }),
         success: function(resultado){
             alert(resultado.mensaje)
+            location.reload();
         }
     });
     $("#modalpelicula").modal("hide");
