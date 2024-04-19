@@ -23,7 +23,6 @@ public class Peliculas {
     private Genero genero; // Cambiar el tipo y el nombre del campo
 
     private Time duracion;
-    private Date estreno;
     private String idioma;
-    private String disponible;
+    private Boolean enestreno;
 }

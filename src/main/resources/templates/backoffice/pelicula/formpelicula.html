@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/pelicula/formpelicula.js}" type="text/javascript"></script>
+
+<nav th:replace="layout::menu"></nav>
+
+<div class="card-body">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de peliculas:
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblpelicula" class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Género</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Idioma</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pelicula : ${listarpeliculas}">
+            <td th:text="${pelicula.idpelicula}"></td>
+            <td th:text="${pelicula.titulo}"></td>
+            <td th:text="${pelicula.descripcion}"></td>
+            <td th:text="${pelicula.imagen}"></td>
+            <td th:text="${pelicula.genero.nom_genero}"></td>
+            <td th:text="${pelicula.duracion}"></td>
+            <td th:text="${pelicula.idioma}"></td>
+            <td>
+                <button type="button" class="btn btn-primary btnactualizar"
+                th:data-pelicod="${pelicula.idpelicula}"
+                        th:data-pelititulo="${pelicula.titulo}"
+                        th:data-pelidescrip="${pelicula.descripcion}"
+                        th:data-peliimagen="${pelicula.imagen}"
+                        th:data-peligenero="${pelicula.genero.nom_genero}"
+                        th:data-peliduracion="${pelicula.duracion}"
+                        th:data-peliidioma="${pelicula.idioma}"
+                        th:data-pelienestreno="${pelicula.enestreno}">Actualizar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btneliminar"
+                        th:data-pelicod="${pelicula.idpelicula}">Eliminar</button>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal registro y actualización de pelicula -->
+<div class="modal fade" id="modalpelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Pelicula</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnompelicula"
+                           placeholder="name@example.com">
+                    <label for="txtnompelicula">Ingrese nombre de la pelicula</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtdescpelicula"
+                           placeholder="name@example.com">
+                    <label for="txtdescpelicula">Ingrese la descripción</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txturlimagen"
+                           placeholder="name@example.com">
+                    <label for="txturlimagen">Ingrese la url de la imagen</label>
+                </div>
+                <div class="mb-3">
+                    <label for="cbopelicula" class="form-label">Seleccione genero</label>
+                    <select id="cbopelicula" class="form-select" ></select>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtduracion"
+                           placeholder="name@example.com">
+                    <label for="txtduracion">Ingrese duracion</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtidioma"
+                           placeholder="name@example.com">
+                    <label for="txtidioma">Ingrese idioma</label>
+                </div>
+                <div class="form-check form-switch" id="switchpelicula">
+                    <input class="form-check-input" type="checkbox"
+                           role="switch" id="cbpelienestreno">
+                    <label class="form-check-label" for="cbpelienestreno">
+                        ¿Pelicula en estreno?</label>
+                </div>
+                <input type="hidden" id="hddpelicod" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
