@@ -14,11 +14,12 @@ $(document).on("click", "#btnagregar", function(){
 $(document).on("click", ".btnactualizar", function(){
     $("#txtnompelicula").val($(this).attr("data-pelititulo"));
     $("#txtdescpelicula").val($(this).attr("data-pelidescrip"));
+    $("#txturlimagen").val($(this).attr("data-peliimagen"));
     $("#hddpelicod").val($(this).attr("data-pelicod"));
     $("#cbopelicula").empty();
     listarCboGenero($(this).attr("data-peligenero"));
     $("#txtduracion").val($(this).attr("data-peliduracion"));
-    $("#txtestreno").val($(this).attr("data-data-peliestreno"));
+    $("#txtestreno").val($(this).attr("data-peliestreno"));
     $("#txtidioma").val($(this).attr("data-peliidioma"));
     $("#txtdisponible").val($(this).attr("data-pelidisp"));
     $("#modalpelicula").modal("show");
@@ -46,6 +47,8 @@ $(document).on("click", "#btnguardar", function(){
     });
     $("#modalpelicula").modal("hide");
 });
+
+
 
 function listarCboGenero(idgenero){
     $.ajax({
