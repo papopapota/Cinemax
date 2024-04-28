@@ -1,3 +1,15 @@
 .bottomLogin{
     margin-top: 6em;
 }
+
+.colorFondo{
+    background-color: #E7EDF2;
+}
+
+    .line-between-columns {
+      border-left: 1px solid #bbbaba; /* Change the color and width as needed */
+      height: 100%;
+    }
+.link-left{
+    margin-left: -27em;
+}
