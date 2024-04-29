@@ -1,0 +1,99 @@
+/* Estilos mejorados para la lista de películas */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.pelicula {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.pelicula img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.contenido {
+    padding: 20px;
+    text-align: center; /* Alineación centrada */
+}
+
+.contenido h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.contenido p {
+    color: #666;
+}
+
+.boton-compra {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Convertir a bloque en línea */
+    margin-top: 20px; /* Espacio adicional entre el párrafo y el botón */
+}
+
+.boton-compra:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilo para el botón de detalle */
+.boton-detalle {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    padding: 10px 20px; /* Espacio de relleno interno */
+    text-decoration: none; /* Quitar subrayado del enlace */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+/* Estilo cuando se pasa el cursor por encima del botón */
+.boton-detalle:hover {
+    background-color: #45a049; /* Color de fondo más oscuro al pasar el cursor */
+}
