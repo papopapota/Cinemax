@@ -25,9 +25,9 @@ public class LoginController {
 		Usuario usuario = usuarioService.authenticate(username, password);
 		if (usuario != null) {
 			session.setAttribute("usuario", usuario);
-			if (usuario.getIdTipo() == 1) {
+			if (usuario.getIdTipoUsuario() == 1) {
 				return "redirect:/usuario";
-			} else if (usuario.getIdTipo() == 2) {
+			} else if (usuario.getIdTipoUsuario() == 2) {
 				return "redirect:/admin";
 			}
 		}
@@ -37,7 +37,7 @@ public class LoginController {
 	@GetMapping("/usuario")
 	public String usuarioVista(HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		if (usuario != null && usuario.getIdTipo() == 1) {
+		if (usuario != null && usuario.getIdTipoUsuario() == 1) {
 			return "usuarioVista";
 		} else {
 			return "redirect:login";
@@ -47,7 +47,7 @@ public class LoginController {
 	@GetMapping("/admin")
 	public String adminVista(HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		if (usuario != null && usuario.getIdTipo() == 2) {
+		if (usuario != null && usuario.getIdTipoUsuario() == 2) {
 			return "adminVista";
 		} else {
 			return "redirect:/login";

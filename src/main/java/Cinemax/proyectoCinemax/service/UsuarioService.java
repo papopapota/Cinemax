@@ -11,9 +11,9 @@ public class UsuarioService implements  IUsuario{
 	}
 	
 	public Usuario authenticate(String username, String password) {
-		Usuario usuario = usuarioRepository.findByUsername(username);
+		Usuario usuario = usuarioRepository.findByNombreUsuario(username);
 		
-		if (usuario != null && usuario.getPassword().equals(password)) {
+		if (usuario != null && usuario.getClaveUsuario().equals(password)) {
 			return usuario;
 		} else {
 			return null;
