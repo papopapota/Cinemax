@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Orbitron:wght@400..900&display=swap');
+
 .bottomLogin{
     margin-top: 6em;
 }
@@ -30,3 +32,20 @@ color: white;
   font-weight: 400;
   font-style: normal;
 }
+
+.navbar{
+    background-color: #2D3142 !important;
+}
+
+.customLogo{
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  letter-spacing: 7px;
+}
+span{
+    color: #EF8354;
+      letter-spacing: 2px;
+
+}
+
+
