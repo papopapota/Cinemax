@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import Cinemax.proyectoCinemax.model.bd.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	Usuario findByNombreUsuario(String nombreUsuario);
+	Usuario findByCorreoUsuarioAndClaveUsuario(String Correo , String clave);
 }
