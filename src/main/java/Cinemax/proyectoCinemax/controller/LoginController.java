@@ -22,6 +22,11 @@ public class LoginController {
 	}
 
 	//@RequestMapping("/login")
+	@GetMapping("/Index")
+	public String Index(  ) {
+		//model.addAttribute("" );
+		return "Index";
+	}
 	@GetMapping("/login")
 	public String LoginForm(  ) {
 		//model.addAttribute("" );
@@ -44,7 +49,7 @@ public class LoginController {
 			//usuario.setIdUsuario(null);
 			usuarioService.guardar(usuario);
 		}catch (Exception e){
-			redirectAttributes.addFlashAttribute("successMessage","Error de Regitro: " + e.getMessage());
+			redirectAttributes.addFlashAttribute("failMessage","Error de Regitro: " + e.getMessage());
 			return "redirect:login";
 			//return "Error al Registrarte: " + e.getMessage();
 
@@ -66,7 +71,7 @@ public class LoginController {
 		if (usuario != null) {
 			session.setAttribute("usuario", usuario);
 			if (usuario.getTipoUsuario().getIdTipoUsuario() == 1) {
-				return "redirect:/actualizarUsuario";
+				return "redirect:/Index";
 			} else if (usuario.getTipoUsuario().getIdTipoUsuario() == 2) {
 				return "redirect:/admin";
 			}

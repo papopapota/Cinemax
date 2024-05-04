@@ -26,7 +26,7 @@
                 <form class=""  th:object="${usuario}" th:action="@{/registrarForm}" method="post">
                     <div class="col-12  container">
                         <div class="input-group mb-4 row">
-                            <input type="text" th:field="*{idUsuario}" class="form-control form-control-lg   mr-4" placeholder="Nombres" aria-label="Nombres">
+                            <input type="text" th:field="*{idUsuario}" class="form-control form-control-lg   mr-4 d-none" placeholder="Nombres" aria-label="Nombres">
                             <input type="text" th:field="*{nombreUsuario}" class="form-control form-control-lg   mr-4" placeholder="Nombres" aria-label="Nombres">
                             <input type="text" th:field="*{apellidoUsuario}" class="form-control form-control-lg  mr-4" placeholder="Apellidos" aria-label="Apellidos">
                         </div>
