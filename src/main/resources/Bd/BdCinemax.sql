@@ -23,22 +23,21 @@ FOREIGN KEY(id_tipo_usuario) REFERENCES tipo_usuario(id_tipo_usuario)
 
 -- Creación de la tabla genero
 CREATE TABLE genero (
-    idgenero INT PRIMARY KEY,
-    nom_genero VARCHAR(100)
+idgenero INT PRIMARY KEY,
+nom_genero VARCHAR(100)
 );
-
 
 -- Creación de la tabla Peliculas
 CREATE TABLE peliculas (
-    idpelicula INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(100),
-    descripcion TEXT,
-    imagen VARCHAR(255),
-    idgenero INT,
-    duracion TIME,
-    idioma VARCHAR(50),
-    enestreno BOOLEAN NOT NULL DEFAULT 0,
-    FOREIGN KEY (idgenero) REFERENCES genero(idgenero)
+idpelicula INT AUTO_INCREMENT PRIMARY KEY,
+titulo VARCHAR(100),
+descripcion TEXT,
+imagen VARCHAR(255),
+idgenero INT,
+duracion TIME,
+idioma VARCHAR(50),
+enestreno BOOLEAN NOT NULL DEFAULT 0,
+FOREIGN KEY (idgenero) REFERENCES genero(idgenero)
 );
 
 create table Sala( -- 3D , 2D , ETC
@@ -87,6 +86,22 @@ primary key (idDetalle),
 FOREIGN KEY(idBoleto) REFERENCES Boleto(idBoleto),
 FOREIGN KEY(idAsiento) REFERENCES Asiento(idAsiento)
 );
+
 insert into tipo_usuario values(1,"Cliente");
 insert into tipo_usuario values(2,"Admin");
-select * from Usuario;
+
+insert into Usuario values(null, "Miguel Antonio", "Ruiz Sierra", "72686871", "mars@mail.com", "12345", 1);
+
+insert into genero values(1, "Accion");
+insert into genero values(2, "Fantasia");
+insert into genero values(3, "Romance");
+
+insert into peliculas values(null, "Buscando a Nemo", "Marlin busca a su hijo Nemo", "", 2, "01:45:00", "Español", 1);
+
+insert into Sala values(1, "2D", 20.5);
+
+insert into Funcion values(1, 1, 1, "2024-05-05", "19:00", "20:45");
+
+insert into Asiento values(1, 1, 1);
+
+insert into Boleto values(1, 1, 1, 2, 100);
