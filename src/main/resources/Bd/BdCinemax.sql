@@ -1,22 +1,24 @@
- create database cinemaxBD ;
+DROP DATABASE IF EXISTS cinemaxBD;
+create database cinemaxBD ;
 use cinemaxBD;
 
--- ////////Tablas SS
-create table TipoUsuario(
-idTipoUsuario int,
-descripcionTipoUsuario varchar (20),
-primary key (idTipoUsuario)
+-- ////////Tablas
+create table tipo_usuario(
+id_tipo_usuario int,
+descripcion_tipo_usuario varchar (20),
+primary key (id_tipo_usuario)
 );
 
 create table Usuario(
-idUsuario int,
-nombreUsuario varchar (50),
-apellidoUsuario varchar (50),
-correoUsuario varchar (100),
-claveUsuario varchar (50),
-idTipoUsuario int,
-primary key (idUsuario),
-FOREIGN KEY(idTipoUsuario) REFERENCES TipoUsuario(idTipoUsuario)
+id_usuario int auto_increment,
+nombre_usuario varchar (50),
+apellido_usuario varchar (50),
+dni char(8) unique,
+correo_usuario varchar (100) unique,
+clave_usuario varchar (50),
+id_tipo_usuario int,
+primary key (id_usuario),
+FOREIGN KEY(id_tipo_usuario) REFERENCES tipo_usuario(id_tipo_usuario)
 );
 
 -- Creación de la tabla genero
@@ -50,7 +52,7 @@ create table Funcion( -- se listara las funciones en la vista del detalle de la 
 idFuncion int,
 idpelicula int,
 idSala int,
-fechaFuncion date, 
+fechaFuncion date,
 horaInicio time,
 horaFin time,
 primary key (idFuncion),
@@ -74,7 +76,7 @@ cantidad int,
 Total double,
 primary key (idBoleto),
 FOREIGN KEY(idFuncion) REFERENCES Funcion(idFuncion),
-FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario)
+FOREIGN KEY(idUsuario) REFERENCES Usuario(id_usuario)
 );
 
 create table DetalleBoleto(
@@ -85,3 +87,6 @@ primary key (idDetalle),
 FOREIGN KEY(idBoleto) REFERENCES Boleto(idBoleto),
 FOREIGN KEY(idAsiento) REFERENCES Asiento(idAsiento)
 );
+insert into tipo_usuario values(1,"Cliente");
+insert into tipo_usuario values(2,"Admin");
+select * from Usuario;
