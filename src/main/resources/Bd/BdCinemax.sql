@@ -1,7 +1,7 @@
  create database cinemaxBD ;
 use cinemaxBD;
 
--- ////////Tablas 
+-- ////////Tablas SS
 create table TipoUsuario(
 idTipoUsuario int,
 descripcionTipoUsuario varchar (20),
