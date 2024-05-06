@@ -8,7 +8,7 @@ import java.sql.Time;
 
 @Data
 @Entity
-@Table(name = "Peliculas")
+@Table(name = "peliculas")
 public class Peliculas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
