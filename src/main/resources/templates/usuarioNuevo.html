@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Usuario</title>
+</head>
+<body>
+    <h1>Nuevo Usuario</h1>
+    <form action="#" th:action="@{/usuarioNuevo}" th:object="${usuario}" method="post">
+        <label for="nombreUsuario">Nombre:</label>
+        <input type="text" id="nombreUsuario" th:field="*{nombreUsuario}"/><br/>
+        <label for="apellidoUsuario">Apellido:</label>
+        <input type="text" id="apellidoUsuario" th:field="*{apellidoUsuario}"/><br/>
+        <label for="correoUsuario">Correo:</label>
+        <input type="text" id="correoUsuario" th:field="*{correoUsuario}"/><br/>
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" th:field="*{dni}"/><br/>
+        <label for="claveUsuario">Contraseña:</label>
+        <input type="text" id="claveUsuario" th:field="*{claveUsuario}"/><br/>
+        <label for="tipoUsuario">Tipo de Usuario:</label>
+        <select id="tipoUsuario" name="tipoUsuario">
+        	<option value="1">Cliente</option>
+        	<option value="2">Administrador</option>
+        </select><br/>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

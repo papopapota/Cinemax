@@ -12,15 +12,18 @@
 </head>
 <body class="container">
     <div class="d-flex ">
-        <div class="col  mt-5 mb-3">
+        <div class="col">
             <div class="d-flex align-items-center">
                 <div class="rounded-circle row">
                     <img height="300px" src="../static/img/logoCinemax.jpg" th:src="@{/img/logoCinemax.jpg}">
                 </div>
                 <h3 class=" fw-bold fs-1">Cinemax</h3>
             </div>
-            <div class="bottomLogin">
-                <a class="btn fw-bold" role="button" data-bs-toggle="button" href="#">Volver a iniciar sesión</a>
+            <div class="bottomLogin" style="margin: 0">
+            	<div class="d-flex align-items-center pt-n2">
+            		<a class="btn fw-bold me-auto p-2 row" th:href="@{/login}" >Volver a iniciar sesión</a>
+            	</div>
+                <!--  <a class="btn fw-bold" role="button" data-bs-toggle="button" th:href="@{/login}">Volver a iniciar sesión</a> -->
                 <p class="fs-2">Bienvenidos a Cinemax</p>
 
                 <form class=""  th:object="${usuario}" th:action="@{/registrarForm}" method="post">
@@ -37,12 +40,10 @@
                     </div>
                 </form>
             </div>
-
-
         </div>
 
         <div class="col ">
-            <img class="img-fluid" width="100%" src="../static/img/fondoLogin.png" th:src="@{/img/fondoLogin.png}" >
+            <img class="img-fluid" src="../static/img/fondoLogin.png" th:src="@{/img/fondoLogin.png}" style="width: 100%; height: 100vh;">
         </div>
     </div>
 

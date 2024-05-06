@@ -2,10 +2,13 @@ package Cinemax.proyectoCinemax.service;
 
 import Cinemax.proyectoCinemax.model.bd.Usuario;
 import Cinemax.proyectoCinemax.repository.UsuarioRepository;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuarioService implements  IUsuario{
+public class UsuarioService implements  IUsuarioService{
 	private final UsuarioRepository usuarioRepository;
 
 	public void guardar(Usuario usuario){
@@ -39,4 +42,23 @@ public class UsuarioService implements  IUsuario{
 		}
         return "Se actualizo el Usuario con exito";
     }
+	
+	
+	
+	
+	public List<Usuario> findAll() {
+		return usuarioRepository.findAll();
+	}
+	
+	public Usuario findById(Long id) {
+		return usuarioRepository.findById(id).orElse(null);
+	}
+	
+	public Usuario save(Usuario usuario) {
+		return usuarioRepository.save(usuario);
+	}
+	
+	public void deleteById(Long id) {
+		usuarioRepository.deleteById(id);
+	}
 }

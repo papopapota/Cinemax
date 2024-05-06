@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Funciones</title>
+</head>
+<body>
+    <h1>Lista de Funciones</h1>
+    <a th:href="@{/funcionNuevo}">Nueva Función</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="funcion : ${funciones}">
+                <td th:text="${funcion.fechaFuncion}"></td>
+                <td th:text="${funcion.horaInicio}"></td>
+                <td th:text="${funcion.horaFin}"></td>
+                <td>
+                    <a th:href="@{/funcionEditar/{id}(id=${funcion.idFuncion})}">Editar</a>
+                    <a th:href="@{/funcionEliminar/{id}(id=${funcion.idFuncion})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

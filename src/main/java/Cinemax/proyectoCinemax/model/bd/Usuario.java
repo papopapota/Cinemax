@@ -13,14 +13,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idUsuario")
 	private Long idUsuario;
+	
 	@Column(name = "nombreUsuario")
 	private String nombreUsuario;
+	
 	@Column(name = "apellidoUsuario")
 	private String apellidoUsuario;
+	
 	@Column(name = "correoUsuario")
     private String correoUsuario;
+	
 	@Column(name = "claveUsuario")
     private String claveUsuario;
+	
 	@Column(name = "dni")
 	private String dni;
 

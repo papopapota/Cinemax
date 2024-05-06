@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Función</title>
+</head>
+<body>
+    <h1>Editar Función</h1>
+    <form action="#" th:action="@{/funcionEditar/{id}(id=${funcion.idFuncion})}" th:object="${funcion}" method="post">
+        <label for="fechaFuncion">Fecha Función:</label>
+        <input type="text" id="fechaFuncion" th:field="*{fechaFuncion}"/><br/>
+        <label for="horaInicio">Hora Inicio:</label>
+        <input type="text" id="horaInicio" th:field="*{horaInicio}"/><br/>
+        <label for="horaFin">Hora Fin:</label>
+        <input type="text" id="horaFin" th:field="*{horaFin}"/><br/>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -41,30 +41,30 @@ FOREIGN KEY (idgenero) REFERENCES genero(idgenero)
 );
 
 create table Sala( -- 3D , 2D , ETC
-idSala int,
-descripcionSala varchar (50),
+id_sala int,
+descripcion_sala varchar (50),
 precio double,
-primary key (idSala)
+primary key (id_sala)
 );
 
 create table Funcion( -- se listara las funciones en la vista del detalle de la pelicula
-idFuncion int,
-idpelicula int,
-idSala int,
-fechaFuncion date,
-horaInicio time,
-horaFin time,
-primary key (idFuncion),
-FOREIGN KEY(idpelicula) REFERENCES peliculas(idpelicula),
-FOREIGN KEY(idSala) REFERENCES Sala(idSala)
+id_funcion int,
+id_pelicula int,
+id_sala int,
+fecha_funcion date,
+hora_inicio time,
+hora_fin time,
+primary key (id_Funcion),
+FOREIGN KEY(id_pelicula) REFERENCES peliculas(idpelicula),
+FOREIGN KEY(id_sala) REFERENCES Sala(id_sala)
 );
 
 create table Asiento(
-idAsiento int,
-idSala int,
-estadoAsiento boolean,
-primary key (idAsiento),
-FOREIGN KEY(idSala) REFERENCES Sala(idSala)
+id_asiento int,
+id_sala int,
+estado_asiento boolean,
+primary key (id_asiento),
+FOREIGN KEY(id_sala) REFERENCES Sala(id_sala)
 );
 
 create table Boleto(
@@ -74,7 +74,7 @@ idUsuario int,
 cantidad int,
 Total double,
 primary key (idBoleto),
-FOREIGN KEY(idFuncion) REFERENCES Funcion(idFuncion),
+FOREIGN KEY(idFuncion) REFERENCES Funcion(id_funcion),
 FOREIGN KEY(idUsuario) REFERENCES Usuario(id_usuario)
 );
 
@@ -84,11 +84,11 @@ idBoleto int,
 idAsiento int,
 primary key (idDetalle),
 FOREIGN KEY(idBoleto) REFERENCES Boleto(idBoleto),
-FOREIGN KEY(idAsiento) REFERENCES Asiento(idAsiento)
+FOREIGN KEY(idAsiento) REFERENCES Asiento(id_asiento)
 );
 
 insert into tipo_usuario values(1,"Cliente");
-insert into tipo_usuario values(2,"Admin");
+insert into tipo_usuario values(2,"Administrador");
 
 insert into Usuario values(null, "Miguel Antonio", "Ruiz Sierra", "72686871", "mars@mail.com", "12345", 1);
 
@@ -105,3 +105,9 @@ insert into Funcion values(1, 1, 1, "2024-05-05", "19:00", "20:45");
 insert into Asiento values(1, 1, 1);
 
 insert into Boleto values(1, 1, 1, 2, 100);
+
+select * from usuario;
+
+select * from peliculas;
+
+select * from funcion;
