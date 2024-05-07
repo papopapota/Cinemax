@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Cinemax.proyectoCinemax.model.bd.Genero;
-import Cinemax.proyectoCinemax.model.bd.Peliculas;
+import Cinemax.proyectoCinemax.model.bd.Pelicula;
 import Cinemax.proyectoCinemax.repository.IPeliculasRepository;
 
 @Controller
-@RequestMapping("/peliculas")
+@RequestMapping("/")
 public class PeliculasController {
 
     @Autowired
@@ -18,6 +18,7 @@ public class PeliculasController {
 
     @GetMapping("/peliculas")
     public String listarPeliculas(Model model) {
+
         model.addAttribute("peliculas", peliculasRepository.findAll());
 
         return "Index"; // Devuelve la vista Index.html

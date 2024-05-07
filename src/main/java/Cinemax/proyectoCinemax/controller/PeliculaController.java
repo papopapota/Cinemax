@@ -2,12 +2,11 @@ package Cinemax.proyectoCinemax.controller;
 
 
 import Cinemax.proyectoCinemax.model.bd.Genero;
-import Cinemax.proyectoCinemax.model.bd.Peliculas;
+import Cinemax.proyectoCinemax.model.bd.Pelicula;
 import Cinemax.proyectoCinemax.model.dto.request.PeliculaRequest;
 import Cinemax.proyectoCinemax.model.dto.response.PeliculaResponse;
 import Cinemax.proyectoCinemax.service.IPeliculaService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public class PeliculaController {
 
     @GetMapping("/list")
     @ResponseBody
-    public List<Peliculas> listPeliculas(){
+    public List<Pelicula> listPeliculas(){
         return IPeliculaService.listarPeliculas();
     }
 
@@ -40,7 +39,7 @@ public class PeliculaController {
         String mensaje = "Producto registrado correctamente";
         boolean respuesta = true;
         try {
-            Peliculas peliculas = new Peliculas();
+            Pelicula peliculas = new Pelicula();
             if(peliculaRequest.getIdpelicula() > 0){
                 peliculas.setIdpelicula(peliculaRequest.getIdpelicula());
             }
@@ -48,7 +47,7 @@ public class PeliculaController {
             peliculas.setDescripcion(peliculaRequest.getDescripcion());
             peliculas.setImagen(peliculaRequest.getImagen());
             Genero genero = new Genero();
-            genero.setIdgenero(peliculaRequest.getGenero());
+            genero.setIdGenero(peliculaRequest.getGenero());
             peliculas.setGenero(genero);
             peliculas.setDuracion(peliculaRequest.getDuracion());
             peliculas.setIdioma(peliculaRequest.getIdioma());

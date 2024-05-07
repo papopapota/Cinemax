@@ -7,10 +7,10 @@ import lombok.Data;
 @Entity
 @Table(name = "Sala")
 public class Sala {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idSala;
-	
-	private String descripcionSala;
-	private Double precio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSala ;
+    private String descripcionSala ;
+    private double precio ;
 }
+

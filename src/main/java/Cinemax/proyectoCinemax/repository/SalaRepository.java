@@ -1,9 +1,10 @@
 package Cinemax.proyectoCinemax.repository;
 
-import Cinemax.proyectoCinemax.model.bd.Pelicula;
+import Cinemax.proyectoCinemax.model.bd.Sala;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PeliculaRepository extends JpaRepository<Pelicula, Integer> {
+public interface SalaRepository extends JpaRepository<Sala, Integer> {
+
 }

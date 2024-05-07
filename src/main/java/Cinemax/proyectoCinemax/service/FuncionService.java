@@ -2,24 +2,29 @@ package Cinemax.proyectoCinemax.service;
 
 import Cinemax.proyectoCinemax.model.bd.Funcion;
 import Cinemax.proyectoCinemax.repository.FuncionRepository;
+
 import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
 public class FuncionService implements IFuncionService {
-	private final FuncionRepository funcionRepository;
+    @Autowired
 
+    private FuncionRepository funcionRepository;
 	@Override
 	public List<Funcion> findAll() {
 		return funcionRepository.findAll();
 	}
-	
+
+
+
 	@Override
-	public Funcion findById(Long id) {
+	public Funcion findById(Integer id) {
 		return funcionRepository.findById(id).orElse(null);
 	}
 	
@@ -27,9 +32,21 @@ public class FuncionService implements IFuncionService {
 	public Funcion save(Funcion funcion) {
 		return funcionRepository.save(funcion);
 	}
-	
+
+
+
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		funcionRepository.deleteById(id);
 	}
+
+
+
+
+
+    @Override
+    public List<Funcion> findByPeliculaIdPelicula(int id){
+        return funcionRepository.findByPeliculaIdpelicula(id);
+
+    }
 }

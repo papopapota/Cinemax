@@ -44,7 +44,7 @@ public class LoginController {
 	public String registrarForm(@ModelAttribute Usuario usuario , RedirectAttributes redirectAttributes) {
 		try {
 			TipoUsuario tipoUsuario = new TipoUsuario();
-			tipoUsuario.setIdTipoUsuario(1);
+			tipoUsuario.setId_tipo_usuario(1);
 			usuario.setTipoUsuario(tipoUsuario);
 			//usuario.setIdUsuario(null);
 			usuarioService.guardar(usuario);
@@ -70,9 +70,9 @@ public class LoginController {
 
 		if (usuario != null) {
 			session.setAttribute("usuario", usuario);
-			if (usuario.getTipoUsuario().getIdTipoUsuario() == 1) {
+			if (usuario.getTipoUsuario().getId_tipo_usuario() == 1) {
 				return "redirect:/Index";
-			} else if (usuario.getTipoUsuario().getIdTipoUsuario() == 2) {
+			} else if (usuario.getTipoUsuario().getId_tipo_usuario() == 2) {
 				return "redirect:/admin";
 			}
 		}
@@ -82,7 +82,7 @@ public class LoginController {
 	@GetMapping("/usuario")
 	public String usuarioVista(HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		if (usuario != null && usuario.getTipoUsuario().getIdTipoUsuario() == 1) {
+		if (usuario != null && usuario.getTipoUsuario().getId_tipo_usuario() == 1) {
 			return "usuarioVista";
 		} else {
 			return "redirect:login";
@@ -92,7 +92,7 @@ public class LoginController {
 	@GetMapping("/admin")
 	public String adminVista(HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		if (usuario != null && usuario.getTipoUsuario().getIdTipoUsuario() == 2) {
+		if (usuario != null && usuario.getTipoUsuario().getId_tipo_usuario() == 2) {
 			return "adminVista";
 		} else {
 			return "redirect:/login";
@@ -111,6 +111,10 @@ public class LoginController {
 		usuario = (Usuario) session.getAttribute("usuario");
 		model.addAttribute(usuario);
 
+		String nombreApellido = usuario.getNombreUsuario() +" "+ usuario.getApellidoUsuario();
+		String emailUsuario = usuario.getCorreoUsuario();
+		model.addAttribute("nombreApellido",nombreApellido);
+		model.addAttribute("emailUsuario",emailUsuario);
 		return "actualizarUsuario";
 	}
 	@PostMapping("/actualizarUsuario")
