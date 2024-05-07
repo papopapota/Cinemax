@@ -51,7 +51,7 @@ $(document).on("click", "#btnguardar", function(){
 
 
 
-function listarCboGenero(idgenero){
+function listarCboGenero(idGenero){
     $.ajax({
         type: "GET",
         url: "/genero/get",
@@ -59,11 +59,11 @@ function listarCboGenero(idgenero){
         success: function(resultado){
             $.each(resultado, function(index, value){
                 $("#cbopelicula").append(
-                    `<option value="${value.idgenero}">${value.nom_genero}</option>`
+                    `<option value="${value.idGenero}">${value.nom_genero}</option>`
                 )
             });
-            if(idgenero > 0){
-                $("#cbopelicula").val(idgenero);
+            if(idGenero > 0){
+                $("#cbopelicula").val(idGenero);
             }
         }
     })

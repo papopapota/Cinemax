@@ -40,8 +40,8 @@ public class PeliculaController {
         boolean respuesta = true;
         try {
             Pelicula peliculas = new Pelicula();
-            if(peliculaRequest.getIdPelicula() > 0){
-                peliculas.setIdpelicula(peliculaRequest.getIdPelicula());
+            if(peliculaRequest.getIdpelicula() > 0){
+                peliculas.setIdpelicula(peliculaRequest.getIdpelicula());
             }
             peliculas.setTitulo(peliculaRequest.getTitulo());
             peliculas.setDescripcion(peliculaRequest.getDescripcion());
