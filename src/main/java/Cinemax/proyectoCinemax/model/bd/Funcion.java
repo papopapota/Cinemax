@@ -17,7 +17,7 @@ public class Funcion {
     private int idFuncion;
     @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
     @JoinColumn(name = "id_pelicula")
-    private Peliculas pelicula;
+    private Pelicula pelicula;
     @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
     @JoinColumn(name = "id_sala")
     private Sala sala;

@@ -46,7 +46,7 @@ public class FuncionService implements IFuncionService {
 
     @Override
     public List<Funcion> findByPeliculaIdPelicula(int id){
-        return funcionRepository.findByPeliculaIdPelicula(id);
+        return funcionRepository.findByPeliculaIdpelicula(id);
 
     }
 }

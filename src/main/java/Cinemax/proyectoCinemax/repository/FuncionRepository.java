@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface FuncionRepository extends JpaRepository<Funcion, Integer> {
 
-    List<Funcion> findByPeliculaIdPelicula(int id );
+    List<Funcion> findByPeliculaIdpelicula(int id );
 }

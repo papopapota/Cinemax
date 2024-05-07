@@ -9,7 +9,8 @@ import lombok.Data;
 public class Genero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idgenero; // Cambiar el nombre del campo
+    @Column(name = "id_genero")
+    private Integer idGenero; // Cambiar el nombre del campo
 
     private String nom_genero;
 }

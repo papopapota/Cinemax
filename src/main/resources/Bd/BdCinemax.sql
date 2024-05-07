@@ -23,21 +23,21 @@ FOREIGN KEY(id_tipo_usuario) REFERENCES tipo_usuario(id_tipo_usuario)
 
 -- Creación de la tabla genero
 CREATE TABLE genero (
-idgenero INT PRIMARY KEY,
+id_genero INT PRIMARY KEY,
 nom_genero VARCHAR(100)
 );
 
 -- Creación de la tabla Peliculas
-CREATE TABLE peliculas (
-idpelicula INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE pelicula (
+id_pelicula INT AUTO_INCREMENT PRIMARY KEY,
 titulo VARCHAR(100),
 descripcion TEXT,
 imagen VARCHAR(255),
-idgenero INT,
+id_genero INT,
 duracion TIME,
 idioma VARCHAR(50),
 enestreno BOOLEAN NOT NULL DEFAULT 0,
-FOREIGN KEY (idgenero) REFERENCES genero(idgenero)
+FOREIGN KEY (id_genero) REFERENCES genero(id_genero)
 );
 
 create table Sala( -- 3D , 2D , ETC
@@ -55,7 +55,7 @@ fecha_funcion date,
 hora_inicio time,
 hora_fin time,
 primary key (id_funcion),
-FOREIGN KEY(id_pelicula) REFERENCES peliculas(id_pelicula),
+FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula),
 FOREIGN KEY(id_sala) REFERENCES Sala(id_sala)
 );
 
@@ -69,23 +69,23 @@ FOREIGN KEY(id_funcion) REFERENCES Funcion(id_funcion)
 );
 
 create table Boleto(
-idBoleto int,
-idFuncion int,
-idUsuario int,
+id_boleto int,
+id_funcion int,
+id_usuario int,
 cantidad int,
 Total double,
-primary key (idBoleto),
-FOREIGN KEY(idFuncion) REFERENCES Funcion(idFuncion),
-FOREIGN KEY(idUsuario) REFERENCES Usuario(id_usuario)
+primary key (id_boleto),
+FOREIGN KEY(id_funcion) REFERENCES Funcion(id_funcion),
+FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario)
 );
 
 create table DetalleBoleto(
-idDetalle int,
-idBoleto int,
-idAsiento int,
-primary key (idDetalle),
-FOREIGN KEY(idBoleto) REFERENCES Boleto(idBoleto),
-FOREIGN KEY(idAsiento) REFERENCES Asiento(idAsiento)
+id_detalle int,
+id_boleto int,
+id_asiento int,
+primary key (id_detalle),
+FOREIGN KEY(id_boleto) REFERENCES Boleto(id_boleto),
+FOREIGN KEY(id_asiento) REFERENCES Asiento(id_asiento)
 );
 
 insert into tipo_usuario values(1,"Cliente");
@@ -97,19 +97,19 @@ insert into genero values(1, "Accion");
 insert into genero values(2, "Fantasia");
 insert into genero values(3, "Romance");
 
-insert into peliculas values(null, "Buscando a Nemo", "Marlin busca a su hijo Nemo", "", 2, "01:45:00", "Español", 1);
+insert into pelicula values(null, "Buscando a Nemo", "Marlin busca a su hijo Nemo", "", 2, "01:45:00", "Español", 1);
 
 insert into Sala values(1, "2D", 20.5);
 
 insert into Funcion values(1, 1, 1, "2024-05-05", "19:00", "20:45");
 
---insert into Asiento values(1, 1, 1);
+-- insert into Asiento values(1, 1, 1);
 
 insert into Boleto values(1, 1, 1, 2, 100);
 
 select * from usuario;
 
-select * from peliculas;
+select * from pelicula;
 
 select * from funcion;
 select * from Asiento ;

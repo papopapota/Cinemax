@@ -39,21 +39,21 @@ public class FuncionController {
 	}
 	
 	@GetMapping("/funcionEditar/{id}")
-	public String editarFuncionForm(@PathVariable Long id, Model model) {
+	public String editarFuncionForm(@PathVariable Integer id, Model model) {
 		Funcion funcion = funcionService.findById(id);
 		model.addAttribute("funcion", funcion);
 		return "funcionEditar";
 	}
 	
 	@PostMapping("/funcionEditar/{id}")
-	public String editarFuncionSubmit(@PathVariable Long id, @ModelAttribute Funcion funcion) {
+	public String editarFuncionSubmit(@PathVariable Integer id, @ModelAttribute Funcion funcion) {
 		funcion.setIdFuncion(id);
 		funcionService.save(funcion);
 		return "redirect:/funcionLista";
 	}
 	
 	@GetMapping("/funcionEliminar/{id}")
-	public String eliminarFuncion(@PathVariable Long id) {
+	public String eliminarFuncion(@PathVariable Integer id) {
 		funcionService.deleteById(id);
 		return "redirect:/funcionLista";
 	}

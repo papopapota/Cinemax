@@ -40,14 +40,14 @@ public class PeliculaController {
         boolean respuesta = true;
         try {
             Pelicula peliculas = new Pelicula();
-            if(peliculaRequest.getIdpelicula() > 0){
-                peliculas.setIdPelicula(peliculaRequest.getIdpelicula());
+            if(peliculaRequest.getIdPelicula() > 0){
+                peliculas.setIdpelicula(peliculaRequest.getIdPelicula());
             }
             peliculas.setTitulo(peliculaRequest.getTitulo());
             peliculas.setDescripcion(peliculaRequest.getDescripcion());
             peliculas.setImagen(peliculaRequest.getImagen());
             Genero genero = new Genero();
-            genero.setIdgenero(peliculaRequest.getGenero());
+            genero.setIdGenero(peliculaRequest.getGenero());
             peliculas.setGenero(genero);
             peliculas.setDuracion(peliculaRequest.getDuracion());
             peliculas.setIdioma(peliculaRequest.getIdioma());

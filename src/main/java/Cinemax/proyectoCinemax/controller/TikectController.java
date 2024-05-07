@@ -80,7 +80,7 @@ public class TikectController {
             List<String> ListIdAsientos = ListaIds();
 
             //Peliculas pelicula = peliculaService.FindById(1);
-            Funcion funcion = funcionService.findByid(1);
+            Funcion funcion = funcionService.findById(1);
             Asiento asiento = new Asiento();
             for (int i = 0; i < ListIdAsientos.size(); i++) {
                 asiento = new Asiento();

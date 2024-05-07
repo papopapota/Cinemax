@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import Cinemax.proyectoCinemax.model.bd.Genero;
-import Cinemax.proyectoCinemax.model.bd.Peliculas;
+import Cinemax.proyectoCinemax.model.bd.Pelicula;
 import Cinemax.proyectoCinemax.repository.IPeliculasRepository;
 
 @Controller
