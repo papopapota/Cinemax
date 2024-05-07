@@ -54,17 +54,18 @@ id_sala int,
 fecha_funcion date,
 hora_inicio time,
 hora_fin time,
-primary key (id_Funcion),
-FOREIGN KEY(id_pelicula) REFERENCES peliculas(idpelicula),
+primary key (id_funcion),
+FOREIGN KEY(id_pelicula) REFERENCES peliculas(id_pelicula),
 FOREIGN KEY(id_sala) REFERENCES Sala(id_sala)
 );
 
 create table Asiento(
-id_asiento int,
-id_sala int,
+id_asiento int auto_increment,
+id_funcion int,
+codigo char(3),
 estado_asiento boolean,
 primary key (id_asiento),
-FOREIGN KEY(id_sala) REFERENCES Sala(id_sala)
+FOREIGN KEY(id_funcion) REFERENCES Funcion(id_funcion)
 );
 
 create table Boleto(
@@ -74,7 +75,7 @@ idUsuario int,
 cantidad int,
 Total double,
 primary key (idBoleto),
-FOREIGN KEY(idFuncion) REFERENCES Funcion(id_funcion),
+FOREIGN KEY(idFuncion) REFERENCES Funcion(idFuncion),
 FOREIGN KEY(idUsuario) REFERENCES Usuario(id_usuario)
 );
 
@@ -84,7 +85,7 @@ idBoleto int,
 idAsiento int,
 primary key (idDetalle),
 FOREIGN KEY(idBoleto) REFERENCES Boleto(idBoleto),
-FOREIGN KEY(idAsiento) REFERENCES Asiento(id_asiento)
+FOREIGN KEY(idAsiento) REFERENCES Asiento(idAsiento)
 );
 
 insert into tipo_usuario values(1,"Cliente");
@@ -102,7 +103,7 @@ insert into Sala values(1, "2D", 20.5);
 
 insert into Funcion values(1, 1, 1, "2024-05-05", "19:00", "20:45");
 
-insert into Asiento values(1, 1, 1);
+--insert into Asiento values(1, 1, 1);
 
 insert into Boleto values(1, 1, 1, 2, 100);
 
@@ -111,3 +112,4 @@ select * from usuario;
 select * from peliculas;
 
 select * from funcion;
+select * from Asiento ;

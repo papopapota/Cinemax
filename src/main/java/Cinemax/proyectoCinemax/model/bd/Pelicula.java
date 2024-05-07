@@ -8,8 +8,8 @@ import java.sql.Time;
 
 @Data
 @Entity
-@Table(name = "peliculas")
-public class Peliculas {
+@Table(name = "Peliculas")
+public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idpelicula;

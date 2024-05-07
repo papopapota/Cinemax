@@ -1,33 +1,35 @@
 package Cinemax.proyectoCinemax.model.bd;
 
-import java.sql.Date;
-import java.sql.Time;
-
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "Funcion")
 public class Funcion {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idFuncion;
-	
-	@ManyToOne
-	@JoinColumn(name = "idPelicula")
-	private Peliculas pelicula;
-	
-	@ManyToOne
-	@JoinColumn(name = "idSala")
-	private Sala sala;
-	
-	@Column(name = "fechaFuncion")
-	private Date fechaFuncion;
-	
-	@Column(name = "horaInicio")
-	private Time horaInicio;
-	
-	@Column(name = "horaFin")
-	private Time horaFin;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_funcion")
+    private int idFuncion;
+    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
+    @JoinColumn(name = "id_pelicula")
+    private Peliculas pelicula;
+    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
+    @JoinColumn(name = "id_sala")
+    private Sala sala;
+    private Date fechaFuncion ;
+    private Time horaInicio ;
+    private Time horaFin ;
+
+    public String getFechaFuncionFormateada() {
+        // Define el formato que deseas para la fecha
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy ");
+
+        // Formatea la fecha en el formato deseado
+        return sdf.format(fechaFuncion);
+    }
 }
