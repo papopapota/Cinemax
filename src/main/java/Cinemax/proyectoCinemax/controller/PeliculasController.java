@@ -23,4 +23,12 @@ public class PeliculasController {
 
         return "Index"; // Devuelve la vista Index.html
     }
+
+    @GetMapping("/peliculas")
+    public String listarPeliculas2(Model model) {
+
+        model.addAttribute("peliculas", peliculasRepository.findAll());
+
+        return "Index"; // Devuelve la vista Index.html
+    }
 }

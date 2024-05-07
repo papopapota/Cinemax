@@ -175,7 +175,7 @@ public class TikectController {
 
         String mensaje = "Se registro correctamente la compra" ;
         redirectAttributes.addFlashAttribute("successMessage",mensaje);
-        return "redirect:peliculas";
+        return "redirect:Index";
     }
 
     public Asiento logicaAsiento(List<Asiento> asientos , String codigoBoleto){
