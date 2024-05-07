@@ -2,7 +2,7 @@ package Cinemax.proyectoCinemax.service;
 
 import Cinemax.proyectoCinemax.model.bd.Funcion;
 import Cinemax.proyectoCinemax.repository.FuncionRepository;
-<<<<<<< HEAD
+
 import lombok.AllArgsConstructor;
 
 import java.util.List;
@@ -20,9 +20,11 @@ public class FuncionService implements IFuncionService {
 	public List<Funcion> findAll() {
 		return funcionRepository.findAll();
 	}
-	
+
+
+
 	@Override
-	public Funcion findById(Long id) {
+	public Funcion findById(Integer id) {
 		return funcionRepository.findById(id).orElse(null);
 	}
 	
@@ -30,18 +32,17 @@ public class FuncionService implements IFuncionService {
 	public Funcion save(Funcion funcion) {
 		return funcionRepository.save(funcion);
 	}
-	
+
+
+
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		funcionRepository.deleteById(id);
 	}
 
 
 
-    @Override
-    public Funcion findByid(int id){
-        return funcionRepository.findById(id).get();
-    }
+
 
     @Override
     public List<Funcion> findByPeliculaIdPelicula(int id){
