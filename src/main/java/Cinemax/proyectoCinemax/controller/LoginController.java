@@ -111,6 +111,10 @@ public class LoginController {
 		usuario = (Usuario) session.getAttribute("usuario");
 		model.addAttribute(usuario);
 
+		String nombreApellido = usuario.getNombreUsuario() +" "+ usuario.getApellidoUsuario();
+		String emailUsuario = usuario.getCorreoUsuario();
+		model.addAttribute("nombreApellido",nombreApellido);
+		model.addAttribute("emailUsuario",emailUsuario);
 		return "actualizarUsuario";
 	}
 	@PostMapping("/actualizarUsuario")
