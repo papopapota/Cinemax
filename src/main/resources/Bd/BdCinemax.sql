@@ -70,7 +70,7 @@ FOREIGN KEY(id_funcion) REFERENCES Funcion(id_funcion)
 );
 
 create table Boleto(
-id_boleto int,
+id_boleto int auto_increment,
 id_funcion int,
 id_usuario int,
 cantidad int,
@@ -80,8 +80,8 @@ FOREIGN KEY(id_funcion) REFERENCES Funcion(id_funcion),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-create table DetalleBoleto(
-id_detalle int,
+create table detalle_boleto(
+id_detalle int auto_increment,
 id_boleto int,
 id_asiento int,
 primary key (id_detalle),
@@ -141,6 +141,8 @@ select * from pelicula;
 
 select * from funcion;
 select * from Asiento ;
+select * from boleto;
+select * from detalle_boleto;
 
 create table tarjeta (
     idtarjeta int auto_increment primary key,
