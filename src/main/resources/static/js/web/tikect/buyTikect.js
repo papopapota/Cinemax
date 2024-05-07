@@ -29,12 +29,13 @@ chairs.forEach(chair => {
         }else{
             chair.classList.add(clase);
             if(textoSillasCode.includes(obtenerId(Event.target))){
+
             }else{
-               if(textoSillasCode == ""){
-                   textoSillasCode += obtenerId(Event.target);
-               }else{
-                   textoSillasCode += ","+obtenerId(Event.target);
-               }
+                if(textoSillasCode == ""){
+                    textoSillasCode += obtenerId(Event.target);
+                }else{
+                    textoSillasCode += ","+obtenerId(Event.target);
+                }
             }
 
         }
@@ -47,6 +48,8 @@ chairs.forEach(chair => {
             chair.classList.add(claseQuitar);
         }
         butacasField.value = textoSillasCode;
+        CalcularCantidad(textoSillasCode);
+        CalcularTotal(textoSillasCode);
     });
 });
 
@@ -62,3 +65,33 @@ window.addEventListener('beforeunload', function(event) {
     butacasField.value = "";
 
 });
+
+function CalcularCantidad(textoSillasCode) {
+
+    var array = [];
+    let cantidadTextField = document.querySelector('#cantidadTextField');
+    if(textoSillasCode != ""){
+        array = textoSillasCode.split(',');
+        cantidadTextField.value = array.length;
+    }
+    if(textoSillasCode == ""){
+        cantidadTextField.value = "0";
+    }
+}
+
+function CalcularTotal(textoSillasCode) {
+    let cantidadTextField = document.querySelector('#cantidadTextField');
+    let precioTextField = document.querySelector('#precioTextField');
+    let totalTextField = document.querySelector('#totalTextField');
+
+    let cantidad = parseInt( cantidadTextField.value);
+    let precio = parseFloat( precioTextField.value);
+
+    if(textoSillasCode != ""){
+
+        totalTextField.value = cantidad * precio;
+    }
+    if(textoSillasCode == ""){
+        totalTextField.value = "0";
+    }
+}
