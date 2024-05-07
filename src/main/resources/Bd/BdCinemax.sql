@@ -120,6 +120,8 @@ insert into tipo_usuario values(1,"Cliente");
 insert into tipo_usuario values(2,"Administrador");
 
 insert into Usuario values(null, "Miguel Antonio", "Ruiz Sierra", "72686871", "mars@mail.com", "12345", 1);
+insert into Usuario values(null, "Daniel", "Olivares", "75132899", "daniel@hotmail.com", "123", 2);
+
 
 -- insert into genero values(1, "Accion");
 -- insert into genero values(2, "Fantasia");
