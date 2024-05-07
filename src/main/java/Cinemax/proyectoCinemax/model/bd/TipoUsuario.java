@@ -9,7 +9,7 @@ import lombok.Data;
 public class TipoUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTipoUsuario;
-    private String descripcionTipoUsuario;
+    private int id_tipo_usuario;
+    private String descripcion_tipo_usuario;
 
 }
