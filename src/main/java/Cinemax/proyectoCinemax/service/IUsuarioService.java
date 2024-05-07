@@ -7,7 +7,7 @@ import Cinemax.proyectoCinemax.model.bd.Usuario;
 public interface IUsuarioService {
     Usuario authenticate(String username, String password );
     String updateUser(Usuario usuario);
-    public Usuario EncontrarUserById(long id);
+    public Usuario EncontrarUserById(Integer id);
     public void guardar(Usuario usuario);
     
     List<Usuario> findAll();

@@ -42,16 +42,24 @@ public class UsuarioService implements  IUsuarioService{
 		}
         return "Se actualizo el Usuario con exito";
     }
-	
-	
-	
-	
+
+	@Override
+	public Usuario EncontrarUserById(Integer id) {
+		return usuarioRepository.findById(id.longValue()).orElse(null);
+	}
+
+
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
-	
+
+	@Override
 	public Usuario findById(Long id) {
-		return usuarioRepository.findById(id).orElse(null);
+		return null;
+	}
+
+	public Usuario findById(Integer id) {
+		return usuarioRepository.findById(Long.valueOf(id)).orElse(null);
 	}
 	
 	public Usuario save(Usuario usuario) {

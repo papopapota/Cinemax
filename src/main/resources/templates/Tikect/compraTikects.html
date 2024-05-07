@@ -18,13 +18,14 @@
 <body class="colorFondo">
 <nav th:replace="layout::menu"></nav>
 <main class="container  ">
+
     <div th:if="${failMessage}" class="alert alert-warning" role="alert">
         <strong th:text="${failMessage}"></strong>
     </div>
     <div class="mt-5"></div>
 
     <div class=" bg-light d-flex justify-content-center mt-5 ">
-        <form class="d-flex justify-content-evenly mt-5 col-12 py-5" action="" method="post">
+        <form th:action="@{/comprarAction}" class="d-flex justify-content-evenly mt-5 col-12 py-5" action="" method="post">
             <div class="col-sm-4 ">
                 <h2 class="fw-bolder poetsen-one-regular">COMPRA TIKECT</h2>
                 <div class="mb-3">
@@ -33,9 +34,9 @@
                 </div>
                 <div class="mb-3">
                     <label  class="form-label">Funcion</label>
-                    <select th:each="funcion : ${listaFuncion}"  class="form-select" aria-label="Default select example">
+                    <select name="idFuncion" th:each="funcion : ${listaFuncion}"  class="form-select" aria-label="Default select example">
                         <option value = "0" selected>Selecciona</option>
-                        <option th:text="${funcion.getFechaFuncionFormateada()} + '|' + ${funcion.horaInicio} + '-' + ${funcion.horaFin}" th:value="${funcion.idFuncion}" value="1">One</option>
+                        <option  th:text="${funcion.getFechaFuncionFormateada()} + '|' + ${funcion.horaInicio} + '-' + ${funcion.horaFin}" th:value="${funcion.idFuncion}" value="1">One</option>
 
                     </select>
                 </div>
@@ -46,11 +47,11 @@
 
                 <div class="mb-3">
                     <label class="form-label">Cantidad</label>
-                    <input disabled id="cantidadTextField" type="number" class="form-control form-control-lg " placeholder="" aria-label="Name">
+                    <input  th:value="${cantidad}" id="cantidadTextField"  name="cantidadTextField" type="number" class="form-control form-control-lg " placeholder="" aria-label="Name">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Total</label>
-                    <input disabled id="totalTextField" type="number" class="form-control form-control-lg " placeholder="" aria-label="Name">
+                    <input  id="totalTextField" name="totalTextField" th:value="${total}" type="text" class="form-control form-control-lg " placeholder="" aria-label="Name">
                 </div>
 
             </div>
@@ -71,7 +72,7 @@
                 <div class="mb-3">
 
                     <label class="fs-3 fw-bold">Butacas:</label>
-                    <input DISABLED class="form-control form-control-lg " id="ButacasField" >
+                    <input th:value="${butacasCodigo}" name="butacasCodigo" class="form-control form-control-lg " id="ButacasField" >
                 </div>
                 <button class=" ml-0 col-5 btn btn-secondary mb-1  mb-4 p-2 fw-bold fs-6"  type="submit">Comprar</button>
                 <button class=" ml-0 col-5 btn btn-secondary mb-1  mb-4 p-2 fw-bold fs-6"  type="submit">Cancelar</button>
