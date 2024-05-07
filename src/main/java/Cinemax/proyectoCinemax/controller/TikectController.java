@@ -3,10 +3,8 @@ package Cinemax.proyectoCinemax.controller;
 import Cinemax.proyectoCinemax.model.bd.Asiento;
 import Cinemax.proyectoCinemax.model.bd.Funcion;
 import Cinemax.proyectoCinemax.model.bd.Sala;
-import Cinemax.proyectoCinemax.service.AsientoService;
-import Cinemax.proyectoCinemax.service.FuncionService;
-import Cinemax.proyectoCinemax.service.PeliculaService;
-import Cinemax.proyectoCinemax.service.TikectService;
+import Cinemax.proyectoCinemax.repository.SalaRepository;
+import Cinemax.proyectoCinemax.service.*;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +21,7 @@ public class TikectController {
     private  final  PeliculaService peliculaService;
     private final AsientoService asientoService;
     private final FuncionService funcionService;
+    private final SalaService salaService;
 
 
     /*    @Override
@@ -30,11 +29,12 @@ public class TikectController {
 
     }*/
 
-    public TikectController(TikectService tikectService, PeliculaService peliculaService, AsientoService asientoService, FuncionService funcionService) {
+    public TikectController(TikectService tikectService, PeliculaService peliculaService, AsientoService asientoService, FuncionService funcionService, SalaService salaService) {
         this.tikectService = tikectService;
         this.peliculaService = peliculaService;
         this.asientoService = asientoService;
         this.funcionService = funcionService;
+        this.salaService = salaService;
     }
 
     List<String> ListaIds (){
@@ -76,7 +76,7 @@ public class TikectController {
         List<Asiento> listaAsiento = asientoService.listaAsientoByFuncion(1);
 
 
-        if (listaAsiento == null){
+        if (listaAsiento.size() == 0){
             List<String> ListIdAsientos = ListaIds();
 
             //Peliculas pelicula = peliculaService.FindById(1);
@@ -100,10 +100,11 @@ public class TikectController {
 
         List<Funcion> listaFuncion = funcionService.findByPeliculaIdPelicula(1);
 
-       // Sala sala = ;
+        Sala sala = salaService.findById(1);
 
         model.addAttribute("listaFuncion",listaFuncion);
         model.addAttribute("listaAsiento",listaAsiento);
-        return "compraTikects";
+        model.addAttribute("precioSala",sala.getPrecio());
+        return "Tikect/compraTikects";
     }
 }
