@@ -49,7 +49,7 @@
             <table id="tbltarjetas" class="table">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
+
                     <th scope="col">Número de Tarjeta</th>
                     <th scope="col">Fecha de Expiración</th>
                     <th scope="col">CVV</th>
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="tarjeta : ${listarTarjetas}">
-                    <td th:text="${tarjeta.idtarjeta}"></td>
+
                     <td th:text="${tarjeta.numerotarjeta}"></td>
                     <td th:text="${tarjeta.fechaexpiracion}"></td>
                     <td th:text="${tarjeta.cvv}"></td>
@@ -109,6 +109,5 @@
         </div>
     </div>
 </div>
-<p th:text="${usuario}"></p>
 </body>
 </html>

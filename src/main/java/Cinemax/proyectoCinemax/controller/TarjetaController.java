@@ -26,7 +26,7 @@ public class TarjetaController {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if(usuario != null) {
             model.addAttribute("usuario", usuario);
-            model.addAttribute("listarTarjetas", ITarjetaService.listarTarjetaPorUsuario(usuario.getIdUsuario()));
+            model.addAttribute("listarTarjetas", ITarjetaService.listarTarjetaPorUsuario(usuario.getIdUsuario().intValue()));
             return "guardartarjeta";
         } else {
             // Si no hay un usuario en la sesión, redirige a donde sea apropiado

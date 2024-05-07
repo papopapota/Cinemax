@@ -113,3 +113,12 @@ select * from pelicula;
 
 select * from funcion;
 select * from Asiento ;
+
+create table tarjeta (
+    idtarjeta int auto_increment primary key,
+    id_usuario int,
+    numerotarjeta varchar(16),
+    fechaexpiracion varchar(5),
+    cvv varchar(3),
+    foreign key (id_usuario) references usuario(id_usuario)
+);
