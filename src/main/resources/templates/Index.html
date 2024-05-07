@@ -123,7 +123,7 @@
                     <h2 th:text="${pelicula.titulo}"></h2>
                     <p th:text="${pelicula.genero.nom_genero}" class="genero"></p>
                     <p th:text="${pelicula.duracion}"></p>
-                    <a th:href="@{/compraTikects}" href="formulario_compra.html" class="boton-compra">Comprar</a>
+                    <a th:href="@{/compraTikects/{id}(id = ${pelicula.idpelicula})}" href="formulario_compra.html" class="boton-compra">Comprar</a>
                 </div>
             </div>
 

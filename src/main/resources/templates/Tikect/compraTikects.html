@@ -30,7 +30,7 @@
                 <h2 class="fw-bolder poetsen-one-regular">COMPRA TIKECT</h2>
                 <div class="mb-3">
                     <label class="form-label">Nombres</label>
-                    <input disabled type="text" class="form-control form-control-lg " placeholder="" aria-label="Name">
+                    <input disabled th:value="${nombreUsuario}" type="text" class="form-control form-control-lg " placeholder="" aria-label="Name">
                 </div>
                 <div class="mb-3">
                     <label  class="form-label">Funcion</label>
@@ -47,11 +47,11 @@
 
                 <div class="mb-3">
                     <label class="form-label">Cantidad</label>
-                    <input  th:value="${cantidad}" id="cantidadTextField"  name="cantidadTextField" type="number" class="form-control form-control-lg " placeholder="" aria-label="Name">
+                    <input readonly  th:value="${cantidad}" id="cantidadTextField"  name="cantidadTextField" type="number" class="form-control form-control-lg " placeholder="" aria-label="Name">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Total</label>
-                    <input  id="totalTextField" name="totalTextField" th:value="${total}" type="text" class="form-control form-control-lg " placeholder="" aria-label="Name">
+                    <input readonly  id="totalTextField" name="totalTextField" th:value="${total}" type="text" class="form-control form-control-lg " placeholder="" aria-label="Name">
                 </div>
 
             </div>

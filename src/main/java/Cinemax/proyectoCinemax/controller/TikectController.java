@@ -7,10 +7,7 @@ import Cinemax.proyectoCinemax.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
@@ -26,6 +23,7 @@ public class TikectController {
     private final SalaService salaService;
     private final UsuarioService UsuarioService;
     private  final DetalleBoletoRepository DetalleBoletorepo;
+    private  final  UsuarioService usuarioService;
     private Cinemax.proyectoCinemax.model.bd.Asiento Asiento;
 
 
@@ -34,7 +32,7 @@ public class TikectController {
 
     }*/
 
-    public TikectController(TikectService tikectService, PeliculaService peliculaService, AsientoService asientoService, FuncionService funcionService, SalaService salaService, Cinemax.proyectoCinemax.service.UsuarioService usuarioService, DetalleBoletoRepository detalleBoletorepo) {
+    public TikectController(TikectService tikectService, PeliculaService peliculaService, AsientoService asientoService, FuncionService funcionService, SalaService salaService, Cinemax.proyectoCinemax.service.UsuarioService usuarioService, DetalleBoletoRepository detalleBoletorepo, Cinemax.proyectoCinemax.service.UsuarioService usuarioService1) {
         this.tikectService = tikectService;
         this.peliculaService = peliculaService;
         this.asientoService = asientoService;
@@ -43,6 +41,7 @@ public class TikectController {
         UsuarioService = usuarioService;
 
         DetalleBoletorepo = detalleBoletorepo;
+        this.usuarioService = usuarioService1;
     }
 
     List<String> ListaIds (){
@@ -77,8 +76,8 @@ public class TikectController {
         return ListIdAsientos;
     }
 
-    @GetMapping("/compraTikects")
-    public String compraTikects(Model model) {
+    @GetMapping("/compraTikects/{id}")
+    public String compraTikects(@PathVariable("id") Integer idPelicula, Model model , HttpSession httpSession) {
         //model.addAttribute("" );
 
         List<Asiento> listaAsiento = asientoService.listaAsientoByFuncion(1);
@@ -106,10 +105,16 @@ public class TikectController {
             listaAsiento = asientoService.listaAsientoByFuncion(1);
         }
 
-        List<Funcion> listaFuncion = funcionService.findByPeliculaIdPelicula(1);
+        List<Funcion> listaFuncion = funcionService.findByPeliculaIdPelicula(idPelicula);
 
         Sala sala = salaService.findById(1);
 
+        Usuario usuarupdate = (Usuario) httpSession.getAttribute("usuario");
+        Usuario usuarupdate2 = usuarupdate;
+
+        //Usuario usuario = usuarioService.findById(usuarupdate2.getIdUsuario());
+        String nombreApellido = usuarupdate2.getNombreUsuario()+ " " + usuarupdate2.getApellidoUsuario();
+        model.addAttribute("nombreUsuario",nombreApellido );
         model.addAttribute("listaFuncion",listaFuncion);
         model.addAttribute("listaAsiento",listaAsiento);
         model.addAttribute("precioSala",sala.getPrecio());
