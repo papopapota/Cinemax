@@ -4,6 +4,7 @@ import Cinemax.proyectoCinemax.model.bd.*;
 import Cinemax.proyectoCinemax.repository.DetalleBoletoRepository;
 import Cinemax.proyectoCinemax.service.*;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -116,10 +117,15 @@ public class TikectController {
     }
 
     @PostMapping("/comprarAction")
-    public String comprarAction(@RequestParam Integer cantidadTextField , @RequestParam String totalTextField , @RequestParam("idFuncion") int idFuncion , @RequestParam String butacasCodigo , RedirectAttributes redirectAttributes) {
+    public String comprarAction(@RequestParam Integer cantidadTextField , @RequestParam String totalTextField , @RequestParam("idFuncion") int idFuncion , @RequestParam String butacasCodigo , RedirectAttributes redirectAttributes , HttpSession httpSession) {
 
         Boletos boleto = new Boletos();
-        Usuario usuario = UsuarioService.EncontrarUserById(1);
+
+        Usuario usuarupdate = (Usuario) httpSession.getAttribute("usuario");
+        Usuario usuarupdate2 = usuarupdate;
+        usuarupdate2.setIdUsuario(usuarupdate.getIdUsuario());
+
+        Usuario usuario = UsuarioService.EncontrarUserById(usuarupdate2.getIdUsuario());
         Funcion funcion = funcionService.findById(idFuncion);
 
         //boleto.setIdBoleto(null);

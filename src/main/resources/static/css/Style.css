@@ -66,3 +66,15 @@ color: blue !important;
   color: ;
 }
 
+#carouselExampleCaptions{
+margin-top: -3.0em !important;
+}
+/*
+.carousel-item img{
+    height: 60em;
+}*/
+/*
+#contenedorCarrousel button{
+    height : 10em;
+
+}*/
