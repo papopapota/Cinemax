@@ -3,9 +3,9 @@ package Cinemax.proyectoCinemax.model.bd;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Data
 @Entity

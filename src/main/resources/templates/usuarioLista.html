@@ -24,7 +24,7 @@
                 <td th:text="${usuario.apellidoUsuario}"></td>
                 <td th:text="${usuario.correoUsuario}"></td>
                 <td th:text="${usuario.dni}"></td>
-                <td th:text="${usuario.tipoUsuario.descripcionTipoUsuario}"></td>
+                <td th:text="${usuario.tipoUsuario.descripcion_tipo_usuario}"></td>
                 <td>
                     <a th:href="@{/usuarioEditar/{id}(id=${usuario.idUsuario})}">Editar</a>
                     <a th:href="@{/usuarioEliminar/{id}(id=${usuario.idUsuario})}">Eliminar</a>
