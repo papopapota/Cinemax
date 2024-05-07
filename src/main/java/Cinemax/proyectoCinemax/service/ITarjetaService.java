@@ -9,4 +9,6 @@ public interface ITarjetaService {
 
     void registrarTarjeta(Tarjeta tarjeta);
     void eliminarTarjeta(Integer id);
+    List<Tarjeta> listarTarjetaPorUsuario(Integer id_usuario);
+
 }

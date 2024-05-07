@@ -1,6 +1,7 @@
 package Cinemax.proyectoCinemax.service;
 
 import Cinemax.proyectoCinemax.model.bd.Tarjeta;
+import Cinemax.proyectoCinemax.model.bd.Usuario;
 import Cinemax.proyectoCinemax.repository.TarjetaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,10 @@ public class TarjetaService implements ITarjetaService{
     public void eliminarTarjeta(Integer id) {
         TarjetaRepository.deleteById(id);
     }
+    @Override
+    public List<Tarjeta> listarTarjetaPorUsuario(Integer idUsuario) {
+        return TarjetaRepository.findById_usuario(idUsuario);
+    }
+
+
 }

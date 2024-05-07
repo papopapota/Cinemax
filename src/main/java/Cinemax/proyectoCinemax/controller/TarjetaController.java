@@ -23,11 +23,15 @@ public class TarjetaController {
 
     @GetMapping("")
     public String listarTarjetas(Model model, HttpSession session){
-        Usuario usuario = new Usuario();
-        usuario = (Usuario) session.getAttribute("usuario");
-        model.addAttribute(usuario);
-        model.addAttribute("listarTarjetas", ITarjetaService.listarTarjeta());
-        return "guardartarjeta";
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if(usuario != null) {
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("listarTarjetas", ITarjetaService.listarTarjetaPorUsuario(usuario.getIdUsuario()));
+            return "guardartarjeta";
+        } else {
+            // Si no hay un usuario en la sesión, redirige a donde sea apropiado
+            return "redirect:/login"; // Por ejemplo, a la página de inicio de sesión
+        }
     }
 
     @GetMapping("/list")
