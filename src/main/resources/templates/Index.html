@@ -12,7 +12,9 @@
 </head>
 
 <body>
-<nav th:replace="nav::Nav"></nav>
+
+<nav th:if="${tipoUsuario == 1}" th:replace="nav::Nav"></nav>
+<nav th:if="${tipoUsuario == 2}" th:replace="navAdmin::NavAdmin"></nav>
 <br>
 <br>
 

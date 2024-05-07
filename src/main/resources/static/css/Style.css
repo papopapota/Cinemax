@@ -32,8 +32,10 @@ margin-left: -2.7em;
   font-weight: 400;
   font-style: normal;
 }
-
 .navbar{
+     background-color: #2D3142 !important;
+}
+.navbarAdmin{
     background-color: #34004D !important;
 }
 .poetsen-one-regular {

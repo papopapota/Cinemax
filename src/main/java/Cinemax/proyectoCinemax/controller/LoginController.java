@@ -74,9 +74,12 @@ public class LoginController {
 		if (usuario != null) {
 			session.setAttribute("usuario", usuario);
 			if (usuario.getTipoUsuario().getId_tipo_usuario() == 1) {
+
+				redirectAttributes.addFlashAttribute("tipoUsuario",1);
 				return "redirect:/Index";
 			} else if (usuario.getTipoUsuario().getId_tipo_usuario() == 2) {
-				return "redirect:/admin";
+				redirectAttributes.addFlashAttribute("tipoUsuario",2);
+				return "redirect:/Index";
 			}
 		}
 		return "redirect:/login?error";
