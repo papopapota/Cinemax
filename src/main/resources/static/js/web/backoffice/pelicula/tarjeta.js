@@ -5,6 +5,7 @@ $(document).on("click", "#btnguardar", function(event) {
         url: "/tarjeta/registrar",
         contentType: "application/json", // Especificar el tipo de contenido como JSON
         data: JSON.stringify({  // Convertir los datos a formato JSON
+            id_usuario: $("#idUsuario").val(),
             idtarjeta: $("#hddtarcod").val(),
             numerotarjeta: $("#numerotarjeta").val(),
             fechaexpiracion: $("#fechaexpiracion").val(),

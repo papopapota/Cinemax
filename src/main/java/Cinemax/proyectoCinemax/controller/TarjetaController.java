@@ -1,5 +1,6 @@
 package Cinemax.proyectoCinemax.controller;
 
+import Cinemax.proyectoCinemax.model.bd.Genero;
 import Cinemax.proyectoCinemax.model.bd.Tarjeta;
 import Cinemax.proyectoCinemax.model.bd.Usuario;
 import Cinemax.proyectoCinemax.model.dto.request.TarjetaRequest;
@@ -21,7 +22,10 @@ public class TarjetaController {
     private ITarjetaService ITarjetaService;
 
     @GetMapping("")
-    public String listarTarjetas(Model model){
+    public String listarTarjetas(Model model, HttpSession session){
+        Usuario usuario = new Usuario();
+        usuario = (Usuario) session.getAttribute("usuario");
+        model.addAttribute(usuario);
         model.addAttribute("listarTarjetas", ITarjetaService.listarTarjeta());
         return "guardartarjeta";
     }
@@ -41,7 +45,6 @@ public class TarjetaController {
             // Obtener el usuario de la sesión
             Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-            // Crear la tarjeta con el ID de sesión como ID de usuario
             Tarjeta tarjeta = new Tarjeta();
             tarjeta.setId_usuario(usuario);
             tarjeta.setIdtarjeta(tarjetaRequest.getIdtarjeta());

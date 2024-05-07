@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class TarjetaRequest {
     private Integer idtarjeta;
-    private Usuario idUsuario;
+    private Integer id_usuario;
     private String numerotarjeta;
     private String fechaexpiracion;
     private String cvv;
