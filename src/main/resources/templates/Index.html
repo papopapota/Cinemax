@@ -13,8 +13,18 @@
 
 <body>
 
-<nav th:if="${tipoUsuario == 1}" th:replace="nav::Nav"></nav>
-<nav th:if="${tipoUsuario == 2}" th:replace="navAdmin::NavAdmin"></nav>
+<div th:if="${tipoUsuario == 1}">
+    <nav  th:replace="nav::Nav" ></nav>
+</div>
+<div th:if="${tipoUsuario == ''}">
+    <nav  th:replace="nav::Nav" ></nav>
+</div>
+<div th:if="${tipoUsuario == null}">
+    <nav  th:replace="nav::Nav" ></nav>
+</div>
+<div th:if="${tipoUsuario == 2}">
+    <nav  th:replace="navAdmin::NavAdmin" ></nav>
+</div>
 <br>
 <br>
 
