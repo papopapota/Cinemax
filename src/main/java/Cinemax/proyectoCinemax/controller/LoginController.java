@@ -1,6 +1,7 @@
 package Cinemax.proyectoCinemax.controller;
 
 import Cinemax.proyectoCinemax.model.bd.TipoUsuario;
+import Cinemax.proyectoCinemax.repository.IPeliculasRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/")
 public class LoginController {
 	private final UsuarioService usuarioService;
-	
-	public LoginController(UsuarioService usuarioService) {
+	private  final IPeliculasRepository peliculasRepository;
+	public LoginController(UsuarioService usuarioService, IPeliculasRepository peliculasRepository) {
 		this.usuarioService = usuarioService;
-	}
+        this.peliculasRepository = peliculasRepository;
+    }
 //hola me llamo agusto
 	//@RequestMapping("/login")
-	@GetMapping("/Index")
-	public String Index(  ) {
+	/*@GetMapping("/Index")
+	public String Index( Model model  ) {
 		//model.addAttribute("" );
+		model.addAttribute("peliculas", peliculasRepository.findAll());
 		return "Index";
-	}
+	}*/
 	@GetMapping("/login")
 	public String LoginForm(  ) {
 		//model.addAttribute("" );

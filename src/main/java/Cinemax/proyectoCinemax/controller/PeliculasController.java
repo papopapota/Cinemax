@@ -16,7 +16,7 @@ public class PeliculasController {
     @Autowired
     private IPeliculasRepository peliculasRepository;
 
-    @GetMapping("/peliculas")
+    @GetMapping("/Index")
     public String listarPeliculas(Model model) {
 
         model.addAttribute("peliculas", peliculasRepository.findAll());
