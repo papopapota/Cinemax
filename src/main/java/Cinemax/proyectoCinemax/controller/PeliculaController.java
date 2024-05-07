@@ -35,7 +35,7 @@ public class PeliculaController {
 
     @PostMapping("/registrar")
     @ResponseBody
-    public PeliculaResponse registrarPelicula(@RequestBody PeliculaRequest peliculaRequest){
+    public PeliculaResponse registrarPelicula(@RequestBody PeliculaRequest peliculaRequest , Model model){
         String mensaje = "Producto registrado correctamente";
         boolean respuesta = true;
         try {
@@ -56,6 +56,9 @@ public class PeliculaController {
         }catch (Exception ex){
             mensaje = "Producto no registrado, error en la BD.";
             respuesta = false;
+            String mensajeError ="error registro" + ex.getMessage() ;
+            model.addAttribute("failMessage",mensajeError);
+            //return "";
         }
         return PeliculaResponse.builder().mensaje(mensaje).respuesta(respuesta).build();
 
