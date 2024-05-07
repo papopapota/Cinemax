@@ -8,7 +8,7 @@ import java.sql.Time;
 
 @Data
 public class PeliculaRequest {
-    private Integer idpelicula;
+    private Integer idPelicula;
     private String titulo;
     private String descripcion;
     private String imagen;

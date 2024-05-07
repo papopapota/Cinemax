@@ -11,16 +11,21 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_usuario")
-	private Integer idUsuario;
-	@Column(name = "nombre_usuario")
+	@Column(name = "idUsuario")
+	private Long idUsuario;
+	
+	@Column(name = "nombreUsuario")
 	private String nombreUsuario;
-	@Column(name = "apellido_usuario")
+	
+	@Column(name = "apellidoUsuario")
 	private String apellidoUsuario;
-	@Column(name = "correo_usuario")
+	
+	@Column(name = "correoUsuario")
     private String correoUsuario;
-	@Column(name = "clave_usuario")
+	
+	@Column(name = "claveUsuario")
     private String claveUsuario;
+	
 	@Column(name = "dni")
 	private String dni;
 

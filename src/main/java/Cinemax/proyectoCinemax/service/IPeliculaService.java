@@ -1,15 +1,15 @@
 package Cinemax.proyectoCinemax.service;
 
-import Cinemax.proyectoCinemax.model.bd.Peliculas;
-import Cinemax.proyectoCinemax.model.bd.Usuario;
+import Cinemax.proyectoCinemax.model.bd.Pelicula;
 
 import java.util.List;
 
 public interface IPeliculaService {
-    List<Peliculas> listarPeliculas();
+    List<Pelicula> listarPeliculas();
 
-    void regitrarPelicula(Peliculas peliculas);
+    void regitrarPelicula(Pelicula peliculas);
     void eliminarPelicula(Integer id);
 
 
+    Pelicula FindById(Integer id);
 }

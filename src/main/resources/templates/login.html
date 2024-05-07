@@ -18,14 +18,14 @@
         <strong th:text="${failMessage}"></strong>
     </div>
     <div class="d-flex ">
-        <div class="col  mt-5 mb-5">
+        <div class="col">
             <div class="d-flex align-items-center">
                 <div class="rounded-circle row">
                     <img height="300px" th:src="@{/img/logoCinemax.jpg}" >
                 </div>
                 <h3 class=" fw-bold fs-1">Cinemax</h3>
             </div>
-            <div class="bottomLogin">
+            <div class="bottomLogin" style="margin: 0">
                 <a class="btn fw-bold" role="button" data-bs-toggle="button" href="#">Volver al inicio</a>
                 <p class="fs-2">Bienvenidos a Cinemax</p>
 
@@ -41,14 +41,10 @@
                     <a class="btn fw-bold ms-auto p-4 " th:href="@{/registrar}" >Registrate aqui</a>
                 </div>
             </div>
-
-
         </div>
-
         <div class="col ">
-            <img class="img-fluid" width="100%" th:src="@{/img/fondoLogin.png}" >
+            <img class="img-fluid" th:src="@{/img/fondoLogin.png}" style="width: 100%; height: 100vh;">
         </div>
     </div>
-
 </body>
 </html>

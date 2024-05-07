@@ -1,32 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/estilos.css">
     <title>Cartelera de Cine</title>
-    <link rel="icon" href="simbolo.jpg" type="image/x-icon">
-    <link th:href="@{/img/simbolo.jpg}" rel="stylesheet" />
+    <link rel="icon" href="/img/simbolo.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link th:href="@{/css/Style.css}" rel="stylesheet" />
 </head>
 
 <body>
-<!--
-    <nav class="menu">
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Peliculas</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
-    -->
-    <nav th:replace="nav::Nav"></nav>
-    <br>
-    <h1>Cartelera de Cine</h1>
+<nav class="menu">
+    <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Peliculas</a></li>
+        <li><a href="#">Contacto</a></li>
+    </ul>
+</nav>
+<br>
+<br>
 
+
+<script>
+    function filterMovies() {
+  var select = document.getElementById("generoSelector");
+  var selectedGenre = select.value.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
+  var peliculas = document.querySelectorAll(".pelicula");
+
+  peliculas.forEach(function (pelicula) {
+      var generos = pelicula.querySelector(".genero").textContent.match(/\b\w+\b/g);
+      generos = generos.map(function (genero) {
+          return genero.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
+      });
+      if (selectedGenre === "" || generos.includes(selectedGenre)) {
+          pelicula.style.display = "block";
+      } else {
+          pelicula.style.display = "none";
+      }
+  });
+}
+
+
+</script>
+
+<div class="ms-5 me-5">
+
+    <h1>Cartelera de Cine</h1>
+    <h1>Listado de Películas</h1>
     <select id="generoSelector" onchange="filterMovies()">
         <option value="">Todos los géneros</option>
         <option value="Acci">Acción</option>
@@ -38,143 +59,29 @@
         <option value="Musica">Música</option>
         <option value="Animacion">Animación</option>
     </select>
-    <!--
-       <div class="fila" id="peliculasContainer">
-            Aquí se mostrarán las películas
-    </div>-->
-
-    <script>
-      function filterMovies() {
-    var select = document.getElementById("generoSelector");
-    var selectedGenre = select.value.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
-    var peliculas = document.querySelectorAll(".pelicula");
-
-    peliculas.forEach(function (pelicula) {
-        var generos = pelicula.querySelector(".genero").textContent.match(/\b\w+\b/g);
-        generos = generos.map(function (genero) {
-            return genero.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar diacríticos
-        });
-        if (selectedGenre === "" || generos.includes(selectedGenre)) {
-            pelicula.style.display = "block";
-        } else {
-            pelicula.style.display = "none";
-        }
-    });
-}
 
 
-    </script>
-
-    <div class="fila" id="peliculasContainer">
-        <div class="pelicula">
-            <a href="/detalleBat">
-                <img src="Batman.jpg" alt="The Batman">
-            </a>
-            <div class="contenido">
-                <h2>The Batman</h2>
-                <p class="genero">Acción,Crimen</p>
-                <p>Horarios: 13:00, 15:30, 18:00</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
+    <div class="row">
+        <div th:each="pelicula : ${peliculas}" class="col-4 mt-3" id="peliculasContainer">
+            <div class="pelicula mb-3">
+                <a th:href="@{'/detalles/detalle' + ${pelicula.idpelicula}}">
+                    <img th:src="@{'../img/' + ${pelicula.idpelicula} + '.jpg'}" alt="img">
+                </a>
+                <div class="contenido">
+                    <h2 th:text="${pelicula.titulo}"></h2>
+                    <p th:text="${pelicula.genero.nom_genero}" class="genero"></p>
+                    <p th:text="${pelicula.duracion}"></p>
+                    <a href="formulario_compra.html" class="boton-compra">Comprar</a>
+                </div>
             </div>
-        </div>
 
-        <div class="pelicula">
-            <a href="/detalleWakanda">
-                <img src="Wakanda.jpg" alt="Black Panther: Wakanda Forever">
-            </a>
-            <div class="contenido">
-                <h2>Black Panther: Wakanda Forever</h2>
-                <p>Horarios: 13:00</p>
-                <p class="genero">Genero: Acción,Aventura,Ciencia Ficción</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleChabuca">
-                <img src="Chabuca.jpg" alt="Chabuca">
-            </a>
-            <div class="contenido">
-                <h2>Chabuca</h2>
-                <p>Horarios: 18:00</p>
-                <p class="genero">Genero: Biografia,Drama,Musica</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleFyf">
-                <img src="Fast&Furious.jpg" alt="Fast & Furious 10">
-            </a>
-            <div class="contenido">
-                <h2>Fast & Furious 10</h2>
-                <p>Horarios: 13:00,18:00</p>
-                <p class="genero">Genero: Acción,Crimen</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleSpider">
-                <img src="Spider.jpg" alt="Spider-Man: Sin Camino a Casa">
-            </a>
-            <div class="contenido">
-                <h2>Spider-Man: Sin Camino a Casa</h2>
-                <p>Horarios: 14:00, 16:30, 19:00</p>
-                <p class="genero">Genero: Acción,Aventura,Ciencia Ficcion</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleVaguito">
-                <img src="vaguito.jpg" alt="Vaguito">
-            </a>
-            <div class="contenido">
-                <h2>Vaguito</h2>
-                <p>Horarios: 14:00, 16:30, 20:00</p>
-                <p class="genero">Genero: Animacion,Aventura</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleVivo">
-                <img src="vivoomuerto.jpg" alt="Vivo o Muerto">
-            </a>
-            <div class="contenido">
-                <h2>Vivo o Muerto</h2>
-                <p>Horarios: 15:00, 17:30, 21:00</p>
-                <p class="genero">Genero: Acción,Suspenso</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleKun">
-                <img src="kung fu.jpg" alt="Kung Fu Panda 4">
-            </a>
-            <div class="contenido">
-                <h2>Kung Fu Panda 4</h2>
-                <p>Horarios: 13:30, 16:00, 19:30</p>
-                <p class="genero">Genero: Animacion,Aventura</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
-        </div>
-
-        <div class="pelicula">
-            <a href="/detalleGarb">
-                <img src="garfield.jpg" alt="Garfield">
-            </a>
-            <div class="contenido">
-                <h2>Garfield</h2>
-                <p>Horarios: 12:00, 14:30, 17:00</p>
-                <p class="genero">Genero: Animacion,Comedia</p>
-                <a href="formulario_compra.html" class="boton-compra">Comprar</a>
-            </div>
         </div>
     </div>
+</div>
+
 
 </body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
