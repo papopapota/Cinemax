@@ -143,13 +143,13 @@ public class TikectController {
         }catch (Exception e){
             String mensaje = "Error guardando Boleto " + e.getMessage();
             redirectAttributes.addFlashAttribute("failMessage",mensaje);
-            return "redirect:compraTikects";
+            return "redirect:compraTikects/1";
         }
         if (butacasCodigo == ""){
 
             String mensaje = "Selecione una butaca";
             redirectAttributes.addFlashAttribute("failMessage",mensaje);
-            return "redirect:compraTikects";
+            return "redirect:compraTikects/1";
         }
         String[] boletos = butacasCodigo.split(",");
 
@@ -169,16 +169,16 @@ public class TikectController {
             detalleBoleto.setAsiento(asiento);
 
             if (asiento == null){
-                String mensaje = "Asiento Nulll ";
+                String mensaje = "Selecione Funcion ";
                 redirectAttributes.addFlashAttribute("failMessage",mensaje);
-                return "redirect:compraTikects";
+                return "redirect:compraTikects/1";
             }
             try {
                 DetalleBoletorepo.save(detalleBoleto);
             }catch (Exception e){
                 String mensaje = "error detalle boleto : " + e.getMessage();
                 redirectAttributes.addFlashAttribute("failMessage",mensaje);
-                return "redirect:compraTikects";
+                return "redirect:compraTikects/1";
             }
         }
 
