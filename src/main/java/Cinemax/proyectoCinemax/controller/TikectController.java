@@ -31,6 +31,22 @@ public class TikectController {
     List<Boletos> findByIdPelicula(int id ){
 
     }*/
+    @GetMapping("/misBoletos")
+    public String cargarListaBoletos(HttpSession session, Model model){
+        try{
+            Usuario usuarupdate = (Usuario) session.getAttribute("usuario");
+            Usuario usuarupdate2 = usuarupdate;
+            usuarupdate2.setIdUsuario(usuarupdate.getIdUsuario());
+
+            //Usuario usuarupdate = (Usuario) session.getAttribute("usuario");
+            //Usuario u = repoUsuario.findById(id_usuario).get();
+            model.addAttribute("usuario", usuarupdate2);
+            model.addAttribute("lstBoletos", tikectService.listaBoletosByIdUsuario(usuarupdate2.getIdUsuario()));
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return "listaTickets";
+    }
 
     public TikectController(TikectService tikectService, PeliculaService peliculaService, AsientoService asientoService, FuncionService funcionService, SalaService salaService, Cinemax.proyectoCinemax.service.UsuarioService usuarioService, DetalleBoletoRepository detalleBoletorepo, Cinemax.proyectoCinemax.service.UsuarioService usuarioService1) {
         this.tikectService = tikectService;
