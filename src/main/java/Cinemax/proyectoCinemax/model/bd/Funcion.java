@@ -15,15 +15,21 @@ public class Funcion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_funcion")
     private int idFuncion;
-    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
-    @JoinColumn(name = "id_pelicula")
-    private Pelicula pelicula;
-    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
-    @JoinColumn(name = "id_sala")
-    private Sala sala;
+    private int id_pelicula;
+    private int id_sala;
     private Date fechaFuncion ;
     private Time horaInicio ;
     private Time horaFin ;
+
+
+    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
+    @JoinColumn(name = "id_pelicula", insertable = false, updatable = false)
+    private Pelicula pelicula;
+
+    @ManyToOne // Cambiar a ManyToOne ya que muchas películas pueden pertenecer a un género
+    @JoinColumn(name = "id_sala", insertable = false, updatable = false)
+    private Sala sala;
+
 
     public String getFechaFuncionFormateada() {
         // Define el formato que deseas para la fecha

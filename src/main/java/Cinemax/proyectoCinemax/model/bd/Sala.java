@@ -9,8 +9,8 @@ import lombok.Data;
 public class Sala {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSala ;
-    private String descripcionSala ;
+    private int id_sala ;
+    private String descripcion_sala ;
     private double precio ;
 }
 

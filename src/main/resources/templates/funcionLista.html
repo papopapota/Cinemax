@@ -21,6 +21,8 @@
     <table class="table table-hover my-4">
         <thead>
         <tr>
+            <th scope="col">Pelicula</th>
+            <th scope="col">Sala</th>
             <th scope="col">Día</th>
             <th scope="col">Hora Inicio</th>
             <th scope="col">Hora Fin</th>
@@ -30,6 +32,8 @@
         <tbody>
         <tr scope="row" th:each="funcion : ${funciones}">
             <td scope="row"  th:text="${funcion.fechaFuncion}"></td>
+            <td scope="row"  th:text="${funcion.Pelicula.titulo}"></td>
+            <td scope="row"  th:text="${funcion.Sala.descripcion_sala}"></td>
             <td scope="row" th:text="${funcion.horaInicio}"></td>
             <td scope="row" th:text="${funcion.horaFin}"></td>
             <td>
