@@ -41,9 +41,19 @@ public class TikectController {
             //Usuario usuarupdate = (Usuario) session.getAttribute("usuario");
             //Usuario u = repoUsuario.findById(id_usuario).get();
             model.addAttribute("usuario", usuarupdate2);
-            model.addAttribute("lstBoletos", tikectService.listaBoletosByIdUsuario(usuarupdate2.getIdUsuario()));
+            List<Boletos> lstBoletos = tikectService.listaBoletosByIdUsuario(usuarupdate2.getIdUsuario());
+            /*for (Boletos boleto : lstBoletos) {
+                Funcion funcion = boleto.getFuncion();
+                Integer peliculaGetId = funcion.getPelicula().getIdpelicula();
+                Pelicula pelicula = peliculaService.FindById(peliculaGetId);
+                boleto.getFuncion().setPelicula(pelicula);
+                //int idPelicula = pelicula.getIdpelicula();
+                //listaIdsPeliculas.add(idPelicula);
+            }*/
+            model.addAttribute("lstBoletos", lstBoletos);
         } catch (Exception e){
-            System.out.println("Error: " + e.getMessage());
+            model.addAttribute("failMessage" , e.getMessage());
+            return "listaTickets";
         }
         return "listaTickets";
     }

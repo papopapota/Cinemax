@@ -7,6 +7,9 @@
 </head>
 <body>
 <nav th:replace="~{nav::Nav}"></nav>
+<div th:if="${failMessage}" class="alert alert-warning" role="alert">
+    <strong th:text="${failMessage}"></strong>
+</div>
 <div class="container">
     <br>
     <h1 style="text-align: center">Mis tickets</h1>
@@ -24,6 +27,7 @@
         <tbody>
         <tr th:each="b : ${lstBoletos}">
             <td th:text="${b.idBoleto}">xx</td>
+
             <td th:text="${b.funcion.pelicula.titulo}">xx</td>
             <td th:text="${b.funcion.fechaFuncion}">xx</td>
             <td th:text="${b.funcion.horaInicio}">xx</td>
